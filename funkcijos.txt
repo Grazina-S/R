@@ -1,0 +1,11 @@
+# FUNKCIJA PAVERSTI KELIEMS STULPELIAMS I FAKTORIUS
+convertToFactors <- function(df, columns_to_convert) {
+  for (col_name in columns_to_convert) {
+    if (col_name %in% names(df)) {
+      df[[col_name]] <- as.factor(df[[col_name]])
+    } else {
+      cat(paste("Column", col_name, "not found in the data frame.\n"))
+    }
+  }
+  return(df)
+}
