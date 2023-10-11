@@ -9,3 +9,14 @@ convertToFactors <- function(df, columns_to_convert) {
   }
   return(df)
 }
+
+# FUNKCIJA PAIMTI IS HSD.test OUTPUTO STATISTIKA IR GRUPIU KODUS
+hsd_to_table <- function(hsd_output,factor_name) {
+  df <- hsd_output$means
+  df <- cbind(col1 = rownames(df), df)
+  row.names(df) <- NULL
+  colnames(df)[1] <- factor_name
+  df <- df %>% arrange(desc(.[[2]]))
+  df$group <- hsd_output$groups$groups
+  return(df)
+}
